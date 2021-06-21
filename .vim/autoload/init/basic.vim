@@ -3,13 +3,14 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Python path setting
-let g:python_host_prog = expand('~/nvim-p2/bin/python')
-let g:python3_host_prog = expand('~/nvim-p3/bin/python3')
+if has("nvim")
+  " Python path setting
+  let g:python_host_prog = expand('~/nvim-p2/bin/python')
+  let g:python3_host_prog = expand('~/nvim-p3/bin/python3')
 
-" Ruby path setting
-let g:ruby_host_prog = expand('~/.rbenv/versions/2.7.3/bin/neovim-ruby-host')
-
+  " Ruby path setting
+  let g:ruby_host_prog = expand('~/.rbenv/versions/2.7.3/bin/neovim-ruby-host')
+endif
 " Encoding
 set encoding=utf-8
 set fileencoding=utf-8

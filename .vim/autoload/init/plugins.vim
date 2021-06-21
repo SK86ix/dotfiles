@@ -40,7 +40,9 @@ endif
 " --easymotion
 Plug 'easymotion/vim-easymotion'
 " --ranger as a file explorer
-Plug 'kevinhwang91/rnvimr'
+if has("nvim")
+      Plug 'kevinhwang91/rnvimr'
+endif
 " --async lint engine
 Plug 'dense-analysis/ale'
 " --lsp implementing (like ale)
