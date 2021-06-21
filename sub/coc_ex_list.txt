@@ -1,0 +1,17 @@
+last update : 2021/6/22
+
+coc-snippets
+coc-prettier
+coc-html
+coc-css
+coc-html-css-support
+coc-eslint
+coc-xml
+coc-tsserver
+coc-solargraph
+coc-neosnippet
+coc-python
+coc-json
+coc-jedi
+coc-java
+coc-htmlhint

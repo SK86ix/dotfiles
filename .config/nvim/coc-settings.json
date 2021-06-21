@@ -1,0 +1,13 @@
+{
+  "eslint.autoFixOnSave": true,
+  "eslint.probe": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue"
+  ],
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "diagnostic.errorSign": "🚫",
+  "diagnostic.warningSign": "⚠️ "
+}
