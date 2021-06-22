@@ -36,13 +36,11 @@ Plug 'Shougo/neosnippet-snippets'
 if has("nvim")
       " --for better syntax highlighting
       Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+      " --ranger as a file explorer
+      Plug 'kevinhwang91/rnvimr'
 endif
 " --easymotion
 Plug 'easymotion/vim-easymotion'
-" --ranger as a file explorer
-if has("nvim")
-      Plug 'kevinhwang91/rnvimr'
-endif
 " --async lint engine
 Plug 'dense-analysis/ale'
 " --lsp implementing (like ale)
