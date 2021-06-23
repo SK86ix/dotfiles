@@ -66,7 +66,7 @@ let g:airline_symbols.whitespace = 'Ξ'	"空白の警告(余分な空白など)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => TreeSitter
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+if has("nvim")
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -77,6 +77,7 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -161,27 +162,29 @@ nmap <Leader>s <Plug>(easymotion-bd-f2)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => ranger
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <Leader>r :RnvimrToggle<CR>
+if has("nvim")
+  nnoremap <Leader>r :RnvimrToggle<CR>
 
-" Make Ranger to be hidden after picking a file
-let g:rnvimr_enable_picker = 1
-" Change the border's color
-let g:rnvimr_border_attr = {'fg': 14, 'bg': -1}
-" Make Neovim wipe the buffers corresponding to the files deleted by Ranger
-let g:rnvimr_enable_bw = 1
-" Draw border with both
-let g:rnvimr_ranger_cmd = 'ranger --cmd="set draw_borders both"'
-" Resize floating window by all preset layouts
-tnoremap <Leader>i <C-\><C-n>:RnvimrResize<CR>
-" Customize the initial layout
-let g:rnvimr_layout = {
-            \ 'relative': 'editor',
-            \ 'width': float2nr(round(0.7 * &columns)),
-            \ 'height': float2nr(round(0.7 * &lines)),
-            \ 'col': float2nr(round(0.15 * &columns)),
-            \ 'row': float2nr(round(0.15 * &lines)),
-            \ 'style': 'minimal'
-            \ }
+  " Make Ranger to be hidden after picking a file
+  let g:rnvimr_enable_picker = 1
+  " Change the border's color
+  let g:rnvimr_border_attr = {'fg': 14, 'bg': -1}
+  " Make Neovim wipe the buffers corresponding to the files deleted by Ranger
+  let g:rnvimr_enable_bw = 1
+  " Draw border with both
+  let g:rnvimr_ranger_cmd = 'ranger --cmd="set draw_borders both"'
+  " Resize floating window by all preset layouts
+  tnoremap <Leader>i <C-\><C-n>:RnvimrResize<CR>
+  " Customize the initial layout
+  let g:rnvimr_layout = {
+              \ 'relative': 'editor',
+              \ 'width': float2nr(round(0.7 * &columns)),
+              \ 'height': float2nr(round(0.7 * &lines)),
+              \ 'col': float2nr(round(0.15 * &columns)),
+              \ 'row': float2nr(round(0.15 * &lines)),
+              \ 'style': 'minimal'
+              \ }
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => fzf
