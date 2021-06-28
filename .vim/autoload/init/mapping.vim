@@ -1,4 +1,8 @@
 """"""""""""""""""""""""""""""
+" MAPPING (ref: many lines from https://github.com/amix/vimrc)
+""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""
 " => Leader
 """"""""""""""""""""""""""""""
 " With a map leader it's possible to do extra key combinations
@@ -7,7 +11,6 @@ let mapleader = "\<Space>"
 
 " Force saving
 nmap <leader>w :w!<cr>:cclose<cr>
-
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -27,10 +30,20 @@ nnoremap <C-k> <C-W>k
 nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
 
+" Swap window!
+" to the very right
+nnoremap <C-w><C-h> <C-w><S-h>
+" to the very left
+nnoremap <C-w><C-l> <C-w><S-l>
+" to the very top
+nnoremap <C-w><C-k> <C-w><S-k>
+" to the very bottom
+nnoremap <C-w><C-j> <C-w><S-j>
+
 " Resize windows with option hjkl
 if has("mac") || has("macunix")
     " k(+)
-    nnoremap ∆ :resize +2<cr>
+    nnoremap ∆ :resize +2<CR>
     " j(-)
     nnoremap ˚ :resize -2<CR>
     " l(+)
@@ -40,20 +53,20 @@ if has("mac") || has("macunix")
 endif
 
 " Close the current buffer
-map <leader>bd :Bclose<cr>:tabclose<cr>gT
+map <leader>bd :Bclose<CR>:tabclose<CR>gT
 
 " Close all the buffers
-map <leader>ba :bufdo bd<cr>
+map <leader>ba :bufdo bd<CR>
 
-map <leader>l :bNext<cr>
-map <leader>h :bprevious<cr>
+map <leader>k :bnext<CR>
+map <leader>j :bprevious<CR>
 
 " Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-" map <leader>tm :tabmove
-" map <leader>t<leader> :tabnext
+map <leader>tn :tabnew<CR>
+map <leader>to :tabonly<CR>
+map <leader>tc :tabclose<CR>
+" map <leader>tm :tabmove<CR>
+map <leader>t<leader> :tabnext<CR>
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
@@ -62,10 +75,10 @@ au TabLeave * let g:lasttab = tabpagenr()
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
-map <leader>te :tabedit <C-r>=expand("%:p:h")<cr>/
+map <leader>te :tabedit <C-r>=expand("%:p:h")<CR>/
 
 " Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
+map <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -101,8 +114,8 @@ nnoremap c "_c
 nnoremap C "_C
 
 "" Move fast in line
-nmap <S-h> ^
-nmap <S-l> $
+nnoremap <S-h> ^
+nnoremap <S-l> $
 
 "" Stay in visual mode when inserting indent
 vnoremap > >gv
@@ -114,52 +127,56 @@ nnoremap <Leader>qq :qall<CR>
 "" Auto reload config files
 nnoremap <Leader><Leader> :source $MYVIMRC<CR>:noh<CR>
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
+map <leader>ss :setlocal spell!<CR>
 
 " Shortcuts using <leader>
 " map <leader>sn ]s
 " map <leader>sp [s
-" map <leader>sa zg
-" map <leader>s? z=
+" add to the dictionary
+map <leader>sa zg
+" get possible words list
+map <leader>s? z=
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remove the Windows ^M - when the encodings gets messed up
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+noremap <Leader>m mmHmt:%s/<C-V><CR>//ge<CR>'tzt'm
 
 " Quickly open a buffer for scribble
-map <leader>q :e ~/buffer<cr>
+map <leader>q :e ~/buffer<CR>
 
 " Quickly open a markdown buffer for scribble
-map <leader>x :e ~/buffer.md<cr>
+map <leader>x :e ~/buffer.md<CR>
 
 " Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
+map <leader>pp :setlocal paste!<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Command mode related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Smart mappings on the command line
-cno $h e ~/
-cno $d e ~/Desktop/
-cno $j e ./
-cno $c e <C-\>eCurrentFileDir("e")<cr>
+cnoremap $h e ~/
+cnoremap $d e ~/Desktop/
+cnoremap $j e ./
+cnoremap $c e <C-\>eCurrentFileDir("e")<CR>
+cnoremap $s e ~/.vim/autoload/
 
 " $q is super useful when browsing on the command line
 " it deletes everything until the last slash
-cno $q <C-\>eDeleteTillSlash()<cr>
+cnoremap $q <C-\>eDeleteTillSlash()<CR>
 
 " Bash like keys for the command line
-cnoremap <C-A>		<Home>
-cnoremap <C-E>		<End>
-cnoremap <C-K>		<C-U>
+cnoremap <C-A> <Home>
+cnoremap <C-E> <End>
+cnoremap <C-K> <C-U>
 
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
@@ -173,11 +190,15 @@ imap ½ $
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General abbreviations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-iab xdate <C-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
+" Time and date
+iab xdate <C-r>=strftime("%Y-%m-%d %H:%M:%S")<CR>
+" UTC
+iab xudate <C-r>=system("date -u '+%Y-%m-%d %H:%M:%S' \| tr -d '\n'")<CR>
+iab improt import
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Helper functions
+" => helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 function! CmdLine(str)

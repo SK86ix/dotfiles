@@ -33,12 +33,8 @@ Plug 'nathanaelkane/vim-indent-guides'
 " --snippets
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-if has("nvim")
-      " --for better syntax highlighting
-      Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-      " --ranger as a file explorer
-      Plug 'kevinhwang91/rnvimr'
-endif
+Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
 " --easymotion
 Plug 'easymotion/vim-easymotion'
 " --async lint engine
@@ -59,15 +55,25 @@ Plug 'AtsushiM/sass-compile.vim'
 " --git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+" --flutter
+Plug 'natebosch/vim-lsc-dart'
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'thosakwe/vim-flutter'
+
+" NVIM
+if has("nvim")
+      " --for better syntax highlighting
+      Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+      " --ranger as a file explorer
+      Plug 'kevinhwang91/rnvimr'
+endif
 
 " APPERANCE
 " --line
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " --color scheme
-Plug 'tomasr/molokai'
 Plug 'w0ng/vim-hybrid'
-Plug 'morhetz/gruvbox'
 " --scroll
 Plug 'yuttie/comfortable-motion.vim'
 " --file icons

@@ -1,5 +1,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" BASIC
+" BASIC (ref: many lines from https://github.com/amix/vimrc)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -259,8 +261,13 @@ endif
 
 " Record undo list
 if has('persistent_undo')
-	let undo_path = expand('~/.vim/undo')
-	exe 'set undodir=' .. undo_path
+  if has("nvim")
+    let undo_path = expand('~/.config/nvim/undo')
+    exe 'set undodir=' .. undo_path
+  else
+    let undo_path = expand('~/.vim/undo')
+    exe 'set undodir=' .. undo_path
+  endif
 	set undofile
 endif
 
@@ -353,6 +360,8 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Terminal
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"ref) https://gist.github.com/ram535/b1b7af6cd7769ec0481eb2eed549ea23
+
 if has ("nvim")
   " With this function you can reuse the same terminal in neovim.
   " You can toggle the terminal and also send a command to the same terminal.
@@ -430,8 +439,8 @@ if has ("nvim")
   endfunction
 
   " With this maps you can now toggle the terminal
-  nnoremap <C-t> :call MonkeyTerminalToggle()<cr>
-  tnoremap <C-t> <C-\><C-n>:call MonkeyTerminalToggle()<cr>
+  nnoremap <C-q> :call MonkeyTerminalToggle()<cr>
+  tnoremap <C-q> <C-\><C-n>:call MonkeyTerminalToggle()<cr>
 
   " This an example on how specify command with different types of files.
       " augroup go
