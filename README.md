@@ -68,8 +68,6 @@
 
 ### .vimrc
 
----
-
 各種設定を`basic`, `mapping`, `plugins`, `myplugconfig`と分割することで、主ファイルである`.vimrc`をナビゲーター的に扱えるようになりました。各プラグインの設定は、個別に作成して…という方法が正しいのかもしれませんが、色々と試してみようと消して入れてを頻繁に繰り返してしまうので、しばらくは`myplugconfig`で一本化することにしています。
 
 ```vim
@@ -93,8 +91,6 @@ runtime! autoload/myplugconfig.vim
     * [`init.vim`](#initvim) : nvimの起動時最初に読み込まれる
 
 ### init.vim
-
----
 
 NeoVim起動後の`:help nvim`コマンドで表示される、`Transitioning from Vim *nvim-from-vim*`の項目に従って下記のように記述。これによって`.vimrc`に到達後各設定ファイルを読み込んでくれるようです。
 
