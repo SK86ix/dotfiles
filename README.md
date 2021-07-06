@@ -61,14 +61,13 @@
     * `basic.vim` : エディタの設定等標準的な設定
     * `mapping.vim` : キーマップ設定
     * `plugins.vim` : プラグインリスト(vim-plugを使用)、カラースキームの起動時読込
+  * `myplugconfig.vim` : 各プラグインの設定
   * `plug.vim` : [vim-plug](https://github.com/junegunn/vim-plug)メインファイル(標準のまま)
     インストールの指示通りに`autoload/`配下へ保存し、標準のまま改変しない。
 * `coc-settings.json` : [Coc](https://github.com/neoclide/coc.nvim)用の設定ファイル
   vim/nvim双方で兼用としているため、ローカル環境下に存在する同名のファイルそれぞれを、`dotfiles/`配下の当ファイルにシンボリックリンクで繋ぎ、設定を同期させています。
 
 ### .vimrc
-
----
 
 各種設定を`basic`, `mapping`, `plugins`, `myplugconfig`と分割することで、主ファイルである`.vimrc`をナビゲーター的に扱えるようになりました。各プラグインの設定は、個別に作成して…という方法が正しいのかもしれませんが、色々と試してみようと消して入れてを頻繁に繰り返してしまうので、しばらくは`myplugconfig`で一本化することにしています。
 
@@ -93,8 +92,6 @@ runtime! autoload/myplugconfig.vim
     * [`init.vim`](#initvim) : nvimの起動時最初に読み込まれる
 
 ### init.vim
-
----
 
 NeoVim起動後の`:help nvim`コマンドで表示される、`Transitioning from Vim *nvim-from-vim*`の項目に従って下記のように記述。これによって`.vimrc`に到達後各設定ファイルを読み込んでくれるようです。
 
