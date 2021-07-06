@@ -1,14 +1,30 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Nerd Tree
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:NERDTreeWinPos = "right"
+" => NERDTree
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:NERDTreeWinPos = "left"
 let NERDTreeShowHidden=0
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
-let g:NERDTreeWinSize=35
-map <leader>nn :NERDTreeToggle<cr>
+let g:NERDTreeWinSize=36
+map <leader>nn :NERDTreeToggle ./<cr>
 map <leader>nb :NERDTreeFromBookmark<Space>
+
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
+
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => NERDTree Git Plugin
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:NERDTreeGitStatusUseNerdFonts = 1 " you should install nerdfonts by yourself. default: 0
+let g:NERDTreeGitStatusShowClean = 1 " default: 0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -21,6 +37,7 @@ let g:ale_fixers = {
 \  'css':['prettier'],
 \  'scss':['prettier'],
 \  'python':['autopep8'],
+\  'dart': ['dartfmt'],
 \  '*': ['remove_trailing_lines', 'trim_whitespace'],
 \}
 let g:ale_linters_explicit = 1
@@ -87,13 +104,13 @@ endif
 " => Coc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Move suggestions
-inoremap <silent><expr> <C-j>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+" inoremap <silent><expr> <C-j>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
 
-inoremap <expr><S-TAB> pumvisible() ? "\<C-n>" : "\<C-h>"
-inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-j> pumvisible() ? "\<C-n>" : "\<S-j>"
+inoremap <expr><S-k> pumvisible() ? "\<C-p>" : "\<S-k>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -191,6 +208,7 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 " Use <leader>x for convert visual selected code to snippet
 xmap <leader>x  <Plug>(coc-convert-snippet)
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => easymotion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -228,6 +246,7 @@ if has("nvim")
               \ }
 endif
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => fzf
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -238,7 +257,7 @@ nnoremap <Leader>e :FZF ~/<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => sass
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""{{{
+"{{{
 let g:sass_compile_auto = 1
 let g:sass_compile_cdloop = 5
 let g:sass_compile_cssdir = ['css', 'stylesheet']
@@ -269,3 +288,10 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 " Enable NERDCommenterToggle to check all se
 let g:NERDToggleCheckAllLines = 1
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vim-Flutter
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>Fr :FlutterHotReload<CR>
+nnoremap <leader>FR :FlutterHotRestart<CR>

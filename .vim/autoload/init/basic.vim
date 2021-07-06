@@ -218,6 +218,9 @@ endtry
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
+" Auto change current directory when moving buffers
+set autochdir
+
 
 """"""""""""""""""""""""""""""
 " => Status line
@@ -449,6 +452,7 @@ if has ("nvim")
       "     autocmd FileType go nnoremap <F5> :call MonkeyTerminalExec('go run ' . expand('%'))<cr>
       " augroup END
 endif
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions

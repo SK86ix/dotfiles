@@ -78,7 +78,7 @@ au TabLeave * let g:lasttab = tabpagenr()
 map <leader>te :tabedit <C-r>=expand("%:p:h")<CR>/
 
 " Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<CR>:pwd<CR>
+" map <leader>cd :cd %:p:h<CR>:pwd<CR> --> set autochdir
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -102,7 +102,7 @@ nnoremap j gj
 nnoremap k gk
 inoremap <silent> jj <ESC>
 nnoremap <Leader>z :noh<CR>
-nnoremap <Leader>. :new ~/.vim<CR>
+nnoremap <Leader>. :NERDTreeToggle ~/.vim/autoload/<CR>
 nnoremap n nzz
 nnoremap N Nzz
 
