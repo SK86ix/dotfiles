@@ -73,23 +73,26 @@ Plug 'rhysd/vim-lsp-ale'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 " --html,xml tag completion
-Plug 'alvan/vim-closetag'
+Plug 'alvan/vim-closetag', {'for': ['html', 'xml']}
+
+" --ejs syntax
+Plug 'nikvdp/ejs-syntax'
 
 " --emmet
-Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim', {'for': ['html', 'ejs']}
 
 " --sass
-Plug 'AtsushiM/search-parent.vim'
-Plug 'AtsushiM/sass-compile.vim'
+Plug 'AtsushiM/search-parent.vim', {'for': ['scss', 'sass']}
+Plug 'AtsushiM/sass-compile.vim', {'for': ['scss', 'sass']}
 
 " --git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
 " --flutter
-Plug 'natebosch/vim-lsc-dart'
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'thosakwe/vim-flutter'
+Plug 'natebosch/vim-lsc-dart', {'for': 'dart'}
+Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
+Plug 'thosakwe/vim-flutter', {'for': 'dart'}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => APPEARANCE
@@ -124,4 +127,7 @@ call plug#end()
 if filereadable(expand("~/.vim/plugged/vim-hybrid/colors/hybrid.vim"))
       set background=dark
       colorscheme hybrid
+
+      " Hide Empty Lines (~)
+      highlight! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 endif

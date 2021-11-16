@@ -9,8 +9,8 @@ let g:NERDTreeWinPos = "left"
 let NERDTreeShowHidden=0
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 let g:NERDTreeWinSize=36
-map <leader>nn :NERDTreeToggle ./<cr>
-map <leader>nb :NERDTreeFromBookmark<Space>
+map <leader>n :NERDTreeToggle ./<cr>
+" map <leader>nb :NERDTreeFromBookmark<Space>
 
 " Exit Vim if NERDTree is the only window left.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
@@ -28,6 +28,21 @@ let g:NERDTreeGitStatusShowClean = 1 " default: 0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => NERDTree Git Plugin
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=238
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=235
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => NERDTree Git Plugin
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:closetag_filenames = '*.html,*.xml,*.erb'
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => ALE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ale_fixers = {
@@ -36,14 +51,15 @@ let g:ale_fixers = {
 \  'html':['prettier'],
 \  'css':['prettier'],
 \  'scss':['prettier'],
-\  'python':['autopep8'],
+\  'python':['black'],
 \  'dart': ['dartfmt'],
+\  'ruby': ['rubocop'],
 \  '*': ['remove_trailing_lines', 'trim_whitespace'],
 \}
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
 \   'javascript': ['eslint'],
-\   'python':['flake8']
+\   'python': ['flake8']
 \}
 let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all'

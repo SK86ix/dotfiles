@@ -7,11 +7,11 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("nvim")
   " Python path setting
-  let g:python_host_prog = expand('~/nvim-p2/bin/python')
-  let g:python3_host_prog = expand('~/nvim-p3/bin/python3')
+  let g:python_host_prog = expand('~/.vim/python-versions/nvim-p2/bin/python')
+  let g:python3_host_prog = expand('~/.vim/python-versions/nvim-p3/bin/python3')
 
   " Ruby path setting
-  let g:ruby_host_prog = expand('~/.rbenv/versions/2.7.3/bin/neovim-ruby-host')
+  let g:ruby_host_prog = expand('~/.rbenv/versions/2.7.4/bin/neovim-ruby-host')
 endif
 
 " Encoding
@@ -71,8 +71,8 @@ endif
 
 if has('nvim')
   set guicursor=n-v:block,i-c-ci-ve:ver25,r-cr:hor20,o:hor50
-		  \,i-c:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
-		  \,sm:block-blinkwait175-blinkoff150-blinkon175
+      \,i-c:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+      \,sm:block-blinkwait175-blinkoff150-blinkon175
 endif
 
 " Avoid garbled characters in Chinese language windows OS
