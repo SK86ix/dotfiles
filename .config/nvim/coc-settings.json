@@ -9,5 +9,14 @@
   ],
   "eslint.workingDirectories": [{ "mode": "auto" }],
   "diagnostic.errorSign": "🚫",
-  "diagnostic.warningSign": "⚠️ "
+  "diagnostic.warningSign": "⚠️ ",
+  "python.jediEnabled": false,
+  "python.formatting.provider": "autopep8",
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "cSpell.userWords": [
+    "Shunya",
+    "kuku",
+    "nums"
+  ]
 }
