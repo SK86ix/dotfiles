@@ -106,6 +106,7 @@ Plug 'w0ng/vim-hybrid'
 
 " --file icons
 Plug 'ryanoasis/vim-devicons'
+Plug 'lambdalisue/glyph-palette.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => NVIM SPECIFIC
