@@ -15,9 +15,9 @@ if has("nvim")
 endif
 
 " Encoding
-set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8,cp932
+set encoding=UTF-8
+set fileencoding=UTF-8
+set fileencodings=UTF-8,cp932
 
 " Sets how many lines of history VIM has to remember
 set history=500
