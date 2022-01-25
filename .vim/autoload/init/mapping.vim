@@ -12,6 +12,7 @@ let mapleader = "\<Space>"
 " Force saving
 nmap <leader>w :w!<cr>:cclose<cr>
 
+
 """"""""""""""""""""""""""""""
 " => Visual mode related
 """"""""""""""""""""""""""""""
@@ -30,6 +31,10 @@ nnoremap <C-k> <C-W>k
 nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
 
+" Split window
+nmap sh :split<Return><C-w>w
+nmap sv :vsplit<Return><C-w>w
+
 " Swap window!
 " to the very right
 nnoremap <C-w><C-h> <C-w><S-h>
@@ -40,17 +45,11 @@ nnoremap <C-w><C-k> <C-w><S-k>
 " to the very bottom
 nnoremap <C-w><C-j> <C-w><S-j>
 
-" Resize windows with option hjkl
-if has("mac") || has("macunix")
-    " k(+)
-    nnoremap ∆ :resize +2<CR>
-    " j(-)
-    nnoremap ˚ :resize -2<CR>
-    " l(+)
-    nnoremap ¬ :vertical resize +2<CR>
-    " h(-)
-    nnoremap ˙ :vertical resize -2<CR>
-endif
+" Resize windows
+nnoremap <C-w><S-h> :vertical resize -4<CR>
+nnoremap <C-w><S-l> :vertical resize +4<CR>
+nnoremap <C-w><S-j> :resize +4<CR>
+nnoremap <C-w><S-k> :resize -4<CR>
 
 " Close the current buffer
 map <leader>bd :Bclose<CR>:tabclose<CR>gT
@@ -61,42 +60,10 @@ map <leader>ba :bufdo bd<CR>
 map <leader>k :bnext<CR>
 map <leader>j :bprevious<CR>
 
-" Useful mappings for managing tabs
-map <leader>tn :tabnew<CR>
-map <leader>to :tabonly<CR>
-map <leader>tc :tabclose<CR>
-" map <leader>tm :tabmove<CR>
-map <leader>t<leader> :tabnext<CR>
-
-" Let 'tl' toggle between this and the last accessed tab
-let g:lasttab = 1
-nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
-
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-map <leader>te :tabedit <C-r>=expand("%:p:h")<CR>/
-
-" Switch CWD to the directory of the open buffer
-" map <leader>cd :cd %:p:h<CR>:pwd<CR> --> set autochdir
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" " move a line of text using alt+[jk] or command+[jk] on mac
-" nmap <m-j> mz:m+<cr>`z
-" nmap <m-k> mz:m-2<cr>`z
-" vmap <m-j> :m'>+<cr>`<my`>mzgv`yo`z
-" vmap <m-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-" if has("mac") || has("macunix")
-"   nmap <D-j> <M-j>
-"   nmap <D-k> <M-k>
-"   vmap <D-j> <M-j>
-"   vmap <D-k> <M-k>
-" endif
-
 " My keymaps
 nnoremap j gj
 nnoremap k gk
@@ -106,41 +73,36 @@ nnoremap <Leader>. :NERDTreeToggle ~/.vim/autoload/<CR>
 nnoremap n nzz
 nnoremap N Nzz
 
-"" Don't yank with..
+" Increment/Decrement
+nnoremap + <C-a>
+nnoremap - <C-x>
+
+" Select all
+nmap <C-a> gg<S-v>G
+
+" Don't yank with..
 nnoremap x "_x
 nnoremap s "_s
 nnoremap S "_S
 nnoremap c "_c
 nnoremap C "_C
 
-"" Move fast in line
+" Show Files in the current directory
+nnoremap <Leader>F :Files<CR>
+
+" Move fast in line
 nnoremap <S-h> ^
 nnoremap <S-l> $
 
-"" Stay in visual mode when inserting indent
+" Stay in visual mode when inserting indent
 vnoremap > >gv
 vnoremap < <gv
 
-"" Quit all
+" Quit all
 nnoremap <Leader>qq :qall<CR>
 
-"" Auto reload config files
+" Auto reload config files
 nnoremap <Leader><Leader> :source $MYVIMRC<CR>:noh<CR>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Spell checking
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<CR>
-
-" Shortcuts using <leader>
-" map <leader>sn ]s
-" map <leader>sp [s
-" add to the dictionary
-map <leader>sa zg
-" get possible words list
-map <leader>s? z=
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -181,20 +143,12 @@ cnoremap <C-K> <C-U>
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
 
-" Map ½ to something useful
-map ½ $
-cmap ½ $
-imap ½ $
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General abbreviations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Time and date
-iab xdate <C-r>=strftime("%Y-%m-%d %H:%M:%S")<CR>
-" UTC
-iab xudate <C-r>=system("date -u '+%Y-%m-%d %H:%M:%S' \| tr -d '\n'")<CR>
-iab improt import
+" Command mode abbreviation :checkhealth
+cab CH checkhealth
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
